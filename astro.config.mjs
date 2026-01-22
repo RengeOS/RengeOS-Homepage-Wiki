@@ -5,6 +5,7 @@ import catppuccin from "@catppuccin/starlight";
 
 // https://astro.build/config
 export default defineConfig({
+	site: 'https://rengeos-wiki.vercel.app',
 	integrations: [
 		starlight({
 			title: 'RengeOS docs',
