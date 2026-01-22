@@ -3,7 +3,7 @@ name: Mirror to Org Repo (RengeOS)
 on:
   push:
     branches:
-      - "**"
+      - "master"
  workflow_dispatch:
 jobs:
   mirror:
