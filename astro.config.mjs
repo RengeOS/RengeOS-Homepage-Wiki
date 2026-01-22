@@ -32,6 +32,14 @@ export default defineConfig({
 					],
 				},
 				{
+					label: 'Installation',
+					items:[
+
+					]
+
+					
+				},
+				{
 					label: 'Reference',
 					autogenerate: { directory: 'reference' },
 				},
