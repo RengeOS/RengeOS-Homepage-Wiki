@@ -35,12 +35,21 @@ export default defineConfig({
 					label: 'Getting Started',
 					items:[
 						{ label: 'Getting an ISO', slug: 'getting-started/getting-an-iso' },
-						{ label: 'Create Bootable Media', slug: 'getting-started/create-bootable-media' },
+						{ label: 'Create Bootable USB', slug: 'getting-started/create-bootable-usb' },
+					],
+				},
+				{
+					label: 'Installation',
+					items: [
+						{ label: 'Automated Installation (Recommended)', slug: 'installation/automated-installation'},
+						{ label: 'Manual Installation (Not Recommended By Author)', slug: 'installation/manual-installation'},
 					],
 				},
 				{
 					label: 'Configuration',
-					items: [],
+					items: [
+						{ label: 'Enable Bcachefs Rollback', slug: 'configuration/enable-bcachefs-rollback'},
+					],
 				},
 				{
 					label: 'Reference',
