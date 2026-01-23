@@ -26,18 +26,21 @@ export default defineConfig({
 			],
 			sidebar: [
 				{
-					label: 'About',
+					label: 'Introduction',
 					items:[
-						{ label: 'What is this?', slug: 'guides/example' },
+						{ label: 'Overview', slug: 'introduction/overview' },
 					],
 				},
 				{
-					label: 'Installation',
+					label: 'Getting Started',
 					items:[
-
-					]
-
-					
+						{ label: 'Getting an ISO', slug: 'getting-started/getting-an-iso' },
+						{ label: 'Create Bootable Media', slug: 'getting-started/create-bootable-media' },
+					],
+				},
+				{
+					label: 'Configuration',
+					items: [],
 				},
 				{
 					label: 'Reference',
