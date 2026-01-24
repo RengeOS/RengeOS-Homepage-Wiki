@@ -14,7 +14,7 @@ import { Tabs, TabItem } from '@astrojs/starlight/components';
   + First, follow the instructions here: <a href="https://www.ventoy.net/en/doc_start.html" target="_blank" rel="noopener noreferrer">How to make bootable USB drive with Ventoy</a>
   + Next, we will copy and paste the ISO file into the **Ventoy** folder like this: <br />
   ![Ventoy](../../../assets/example-image/ventoy.png)
-  + Once everything is done, we will remove the USB drive, and then you can install RengeOS with it.
+  + **Once everything is done**, we will remove the USB drive, and now you have a bootable USB drive to install **RengeOS**, which supports both **UEFI and Legacy BIOS modes**.
 
   </TabItem>
   <TabItem label="dd command">
@@ -37,8 +37,8 @@ nvme0n1     259:0    0 238.5G  0 disk
   ```sh
   sudo dd bs=4M if=path/to/rengeos.iso of=/dev/sdX status=progress oflag=sync
   ```
-  + Make sure you replace path/to/archcraft.iso with the Archcraft ISO path and sdX with your USB device.
-  + This will create a bootable Archcraft USB for both BIOS and UEFI.
+  + Make sure you replace path/to/rengeos.iso with the RengeOS ISO path and sdX with your USB device.
+  + This will create a bootable RengeOS USB for both BIOS and UEFI.
 
   
   </TabItem>
