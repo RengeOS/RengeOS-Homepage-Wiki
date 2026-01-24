@@ -1,5 +1,15 @@
 ---
 title: Automated Installation
 ---
+**Essentially**, we'll use ros-installer to automate the installation process from a Live ISO to the machine using the ``unsquashfs`` method.
 
-(COMING SOON)
+import { Aside } from '@astrojs/starlight/components';
+
+<Aside type="note">
+  **Currently**, only offline installation is supported,
+  and there are no plans to switch the installation process to online for the following reasons:
++ **Online installation** can be quite risky if the network encounters problems during the installation process,
+  such as installing a package, as restarting the process would be very inconvenient.
++ The **online installation** process is not compatible with the original design of this distribution (RengeOS).
++ Maintaining **other packages** and **infrastructure** using online methods would be quite expensive for me :(
+</Aside>
