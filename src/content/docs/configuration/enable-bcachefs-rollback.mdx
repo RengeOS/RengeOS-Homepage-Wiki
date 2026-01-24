@@ -2,4 +2,31 @@
 title: Enable Bcachefs Rollback
 ---
 
-## Currently under development!
+**Bcachefs** is basically quite similar to the Btrfs we know, and if you want to learn more about it,
+you can read here: <a href="https://bcachefs.org/" target="_blank" rel="noopener noreferrer">Bcachefs Filesystem</a>
+
+<br />
+
+**Currently**, there's no clear explanation online for how to take snapshots of the / directory system in bcachefs,
+so we can now enable snapshots for bcachefs by running the `bcachefs-rollback` hook of mkinitcpio for initramfs.
+<br />
+**Thanks** to [**@bathtime**](https://github.com/bathtime) for coming up with this method ❤️
+
+## Let's proceed
+<br />
+**First**, we need to ``git clone`` this source before proceeding.
+
+```sh
+cd /tmp/ && git clone https://github.com/RengeOS/Bcachefs-Rollback-Initramfs
+```
+**Next**, we will install it by building it from source code with ``makepkg -si``.
+
+```sh
+cd Bcachefs-Rollback-Initramfs/ && makepkg -si
+```
+**After** the package build and installation process is successful, our task is to restart the entire system.
+
+```sh
+# you can replace reboot to 'systemctl reboot' if not working
+reboot
+```

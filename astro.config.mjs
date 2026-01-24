@@ -49,15 +49,16 @@ export default defineConfig({
 					label: 'Configuration',
 					items: [
 						{ label: 'Enable Bcachefs Rollback', slug: 'configuration/enable-bcachefs-rollback'},
+						{ label: 'Restore RengeOS To Its Original State (With Recovery Mode)', slug: 'configuration/restore-rengeos'},
 					],
 					collapsed: false,
 				},
 				{
-					label: 'Reference (Currently Under Development!)',
+					label: 'Reference',
 					items: [
-	
+						{ label: 'About Me', slug: 'reference/about-me'},
 					],
-					collapsed: true,
+					collapsed: false,
 				},
 			],
 		}),
