@@ -15,32 +15,139 @@ import { Aside } from '@astrojs/starlight/components';
 </Aside>
 
 ## Boot into Live ISO
-- First, we need to plug in the bootable USB drive containing the ISO file.
+- **First**, we need to plug in the bootable USB drive containing the ISO file.
   Then, depending on your computer's hardware manufacturer,
   access the boot menu and boot from that USB drive.
 
-- Then you will see the boot menu will look like this (UEFI). For Legacy BIOS, it will display similarly but with a slightly different interface.
+- **Then** you will see the boot menu will look like this (UEFI). For Legacy BIOS, it will display similarly but with a slightly different interface.
 
 ![grub](../../../assets/example-ros-installer/1.png)
 
 <Aside type="tip">
-  If you don't know what to choose, just select Linux Latest.
+  **If** you don't know what to choose, just select Linux Latest.
 </Aside>
 
 <Aside type="caution" title="Note">
-If you encounter a black screen error when selecting Linux Latest on Intel 10th generation chips (reported black screen issues), try selecting Linux LTS.
+``**If** you encounter a black screen error when selecting Linux Latest on Intel 10th generation chips (reported black screen issues), try selecting Linux LTS.
 </Aside>
 
 ## Start the installation process
-- After the systemd process is complete, you will see a screen like this (RengeOS is inherently a minimal distribution).
+- **After** the systemd process is complete, you will see a screen like this (RengeOS is inherently a minimal distribution).
 
 ![after-systemd](../../../assets/example-ros-installer/2.png)
 
-- Next, we will need to begin the installation process with ``ros-installer``
+- **Next**, we will need to begin the installation process with ``ros-installer``
 
 ```sh
 ros-installer
 ```
-- Immediately after you run the installer, this interface will appear on the screen. (temporary image)
+- **Immediately** after you run the installer, this interface will appear on the screen.
 
-![ros-installer](../../../assets/example-ros-installer/last.png)
+![ros-installer](../../../assets/example-ros-installer/3.png)
+
+
+## Choose a hard drive to install on
+
+- **From here** you can see the choice of hard drive to which **RengeOS** will be **installed**.
+
+<Aside type="note">
+ By default, it will automatically detect whether your machine is using UEFI or Legacy BIOS, so you don't need to worry about this :)
+</Aside>
+
+- **Here**, the drive I want to install it on is ``sda``
+
+| ![4](../../../assets/example-ros-installer/4.png) | ![5](../../../assets/example-ros-installer/5.png) |
+|--------------|--------------|
+
+## Disk partition
+- **Next**, choose your desired size for the ``/boot`` partition (the default is **1GB**).
+
+![6](../../../assets/example-ros-installer/6.png)
+
+- **After that**, it will ask if you want to enable **Recovery Mode**.
+- **If** you're someone who likes to **experiment** and accidentally **messes up** your system like **me** :)
+  then you should probably enable **Recovery Mode** because it can help **restore** your system to its original state as
+  when it was first installed using ``ros-reborn``,
+  or you can ``mount`` a damaged root partition to repair it or do many other things.
+
+| ![7](../../../assets/example-ros-installer/7.png) | ![8](../../../assets/example-ros-installer/8.png) |
+|--------------|--------------|
+
+
+- If you select **Yes**, after the installation is complete you will see it in the **GRUB** menu as shown below.
+
+![last1](../../../assets/example-ros-installer/last1.png)
+
+- If you choose **No**, that's perfectly fine because recovery mode is essentially a second root partition on the device,
+  created to help users repair the main root partition more easily without needing a Live ISO.
+
+## System configuration
+
+- **Now** it will ask you for your computer's hostname, so enter the name you want.
+
+![9](../../../assets/example-ros-installer/9.png)
+
+**After** completing that, the next step is to provide the user's username
+
+<Aside type="caution">
+  Remember that you will use it to log in as a user.
+</Aside>
+
+![10](../../../assets/example-ros-installer/10.png)
+
+## Timezone and System locale
+- **Now** we need to select the time region, here, I've chosen ``Asia/Ho_Chi_Minh`` because I live there
+
+![11](../../../assets/example-ros-installer/11.png)
+
+- **After** selecting your region, the next step is to choose your system locale.
+- **If** you're unsure what to choose, just select ``English (US)`` as it's the **default** standard on most **other distributions**, and I chose it too.
+
+![12](../../../assets/example-ros-installer/12.png)
+
+## Kernel selection
+- **The next step** is to select the **kernel** that will be installed and used as the **default**.
+
++ ``linux-renge-bore`` is the latest kernel based on the **Xanmod Kernel** and **BORE Schedule**,
+  with **O3 optimization** and **other features** that make laptops/desktops/gaming significantly smoother,
+  reducing lag and stutter during heavy background tasks. However, it is not optimized for long-term workloads or servers.
+  
++ ``linux-renge-lts`` is also the latest kernel (in terms of official Linux kernel versions for LTS) based on the **Xanmod Kernel**,
+  built with **O3 optimization**.
+  It excels in smoothness, low latency, and better laptops/desktop/gaming performance than the regular kernel,
+  but maintains **long-term** stability and is less optimized than ``linux-renge-bore``.
+
+<Aside type="tip">
+ **Choose** ``linux-renge-bore`` if you're unsure which one to choose, as it offers the most comprehensive support (**recommended** by the **author**).
+</Aside>
+
+<Aside type="caution">
+**If** you are experiencing a black screen boot issue when booting into **Linux Latest** but not with **Linux LTS**, then select ``linux-renge-lts``.
+</Aside>
+
+![13](../../../assets/example-ros-installer/13.png)
+
+## Filesystem
+
+<Aside type="note">
+  **Currently**, RengeOS only supports bcachefs and xfs, but in the future it will probably support more :) for example, btrfs, f2fs, etc.
+</Aside>
+
+- **After** selecting your desired kernel, you will see something like this (for the ``linux-renge-bore`` option).
+- **If** we selected ``linux-renge-lts``, only the **xfs filesystem** option will be **displayed** because it doesn't support **bcachefs filesystem**.
+- **Anyway**, that's your decision, but I still recommend choosing **bcachefs filesystem** if possible because RengeOS currently has strong support for it.
+
+![14](../../../assets/example-ros-installer/14.png)
+
+## Wait for the setup process to complete
+
+- **Now** we need to review and confirm whether it has met expectations.
+- **If** you're okay with it, you can select **Yes**. Otherwise, select **No**, and you can start the process again.
+
+<Aside type="caution">
+  **Note that** selecting Yes will begin the formatting and configuration process according to your choices.
+  **Make sure** you have backed up all important data as it will erase everything.
+</Aside>
+
+| ![15](../../../assets/example-ros-installer/15.png) | ![16](../../../assets/example-ros-installer/16.png) |
+|--------------|--------------|
