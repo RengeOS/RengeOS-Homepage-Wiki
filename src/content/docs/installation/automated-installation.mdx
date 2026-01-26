@@ -60,6 +60,18 @@ ros-installer
 |--------------|--------------|
 
 ## Disk partition
+
+<Aside type="note">
+  **We** have the following design:
+  + ``/boot`` is the boot partition for Linux (size can be selected).
+    **If** using ``UEFI``, it will be formatted as ``FAT32``, and **if** using ``Legacy BIOS``, it will be formatted as ``XFS``.
+  + ``/recovery`` is the recovery partition for Linux (size can be selected and can enable/disable if you want).
+    **Both** ``UEFI`` and ``Legacy BIOS`` will always be in ``XFS`` format.
+  + **The** ``/`` partition is the ``root`` partition for Linux (it will take the remaining size after partitioning for ``/boot`` and ``/recovery``).
+    **Both** ``UEFI`` and ``Legacy BIOS`` can choose from the following formats: ``Bcachefs``, ``XFS`` (currently supported);
+    if using an **LTS kernel**, only ``XFS`` is supported.
+</Aside>
+
 - **Next**, choose your desired size for the ``/boot`` partition (the default is **1GB**).
 
 ![6](../../../assets/example-ros-installer/6.png)
