@@ -10,12 +10,14 @@ title: Getting an ISO
 import { Card, CardGrid } from '@astrojs/starlight/components';
 
 <CardGrid stagger>
-  <Card title="Google Drive" icon="cloud-download">
-    Obtain an ISO here: <a href="https://drive.google.com/drive/folders/1kZROC3W3T_CSAmKgXUiV9OoTZi4PX98l?usp=drive_link" target="_blank" rel="noopener noreferrer">Download</a>
+  <Card title="SourceForge (Latest)" icon="cloud-download">
+    Obtain an ISO here: <a href="https://sourceforge.net/projects/rengeos/files/RengeOS-ISO/Latest/" target="_blank" rel="noopener noreferrer">Download</a>
   </Card>
-  <Card title="SourceForge" icon="cloud-download">
-    Obtain an ISO here: <a href="https://sourceforge.net/projects/rengeos/files/RengeOS-ISO/" target="_blank" rel="noopener noreferrer">Download</a>
+  <Card title="Github Release (Latest)" icon="cloud-download">
+    Obtain an ISO here: <a href="https://github.com/RengeOS/Source-ISO/releases/tag/rengeos-2026.01.29-x86_64.iso" target="_blank" rel="noopener noreferrer">Download</a>
   </Card>
+  **Experiencing** download issues? <a href="https://drive.google.com/drive/folders/1VOCCLUQAZmDAjrKe9C0rMFI9XHneqsnI?usp=drive_link" target="_blank" rel="noopener noreferrer">Download Here</a>
+
 </CardGrid>
 
 ## Build it from source code (Arch-based)
@@ -37,4 +39,27 @@ cd ~ && git clone https://github.com/RengeOS/Source-ISO && cd ~/Source-ISO/
 ```sh
 ./build_iso
 ```
-+ After the build process is complete, we will have the ISO file located in the ``out`` folder.
++ **After** the build process is complete, we will have the ISO file located in the ``out`` folder.
++ **Inside** the `out` folder, you will find the **ISO file** and the **SHA256 checksum file**.
+
+## Checksum files (Recommend)
+
+- **Please ensure** you have the ``sha256sum`` package on **your distribution** before proceeding.
+- **You** might be **wondering** **how to** ensure the integrity of an **ISO file** when it's downloaded.
+- **Therefore**, we will perform an additional step to verify the integrity of the ISO by comparing the ISO with the SHA256 hash following the steps below:
++ **First**, **make sure** you have downloaded the **ISO file** and the **SHA256 ISO file** to the same folder before testing!
+
+```sh
+[test@rengeos ~]$ ls test/
+rengeos-2026.01.29-x86_64.iso  rengeos-2026.01.29-x86_64.iso.sha256
+```
+
++ **Now** we will proceed to checksum the files.
++ **Replace** it with the **SHA256 file** of the **ISO** you downloaded earlier, and here is an example:
+
+```sh
+[test@rengeos ~]$ cd test/ && sha256sum -c rengeos-2026.01.29-x86_64.iso.sha256
+rengeos-2026.01.29-x86_64.iso: OK
+```
+
++ **If** it says ``OK`` as above, then your **ISO** is definitely fine; otherwise, **I recommend** you download a new **ISO**.
